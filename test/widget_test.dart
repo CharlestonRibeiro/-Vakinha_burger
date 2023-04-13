@@ -7,13 +7,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:vakinha_burger_provider_com_bloc/main.dart';
+import 'package:vakinha_burger_provider_com_bloc/app/vakinha_delivery_app.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(const VakinhaDeliveryApp());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
