@@ -2,12 +2,12 @@ import 'package:vakinha_burger_provider_com_bloc/app/models/product_model.dart';
 
 class OrderProductDto {
   final ProductModel product;
-  final int amout;
+  final int amount;
   OrderProductDto({
     required this.product,
-    required this.amout,
+    required this.amount,
   });
 
-  double get totalPrice => amout * product.price;
+  double get totalPrice => amount * product.price;
 
 }

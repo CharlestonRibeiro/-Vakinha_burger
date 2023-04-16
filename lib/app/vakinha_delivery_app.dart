@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:vakinha_burger_provider_com_bloc/app/core/provider/application_binding.dart';
 import 'package:vakinha_burger_provider_com_bloc/app/core/ui/theme/theme_config.dart';
+import 'package:vakinha_burger_provider_com_bloc/app/pages/auth/login/login_page.dart';
+import 'package:vakinha_burger_provider_com_bloc/app/pages/auth/register/register_page.dart';
 import 'package:vakinha_burger_provider_com_bloc/app/pages/home/home.page.dart';
 import 'package:vakinha_burger_provider_com_bloc/app/pages/home/home_router.dart';
 import 'package:vakinha_burger_provider_com_bloc/app/pages/product_detail/product_detail_page.dart';
@@ -22,6 +24,8 @@ class VakinhaDeliveryApp extends StatelessWidget {
          SplashPage.route : (context) => const SplashPage(),
          HomePage.route : (context) => HomeRouter.page,
          ProductDetailPage.route : (context) => ProductDetailRouter.page,
+         LoginPage.route: (context) => const LoginPage(),
+         RegisterPage.route: (context) => const RegisterPage(),
         },
       ),
     );
