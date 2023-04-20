@@ -1,10 +1,14 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vakinha_burger_provider_com_bloc/app/core/extensions/formatter_extension.dart';
+import 'package:vakinha_burger_provider_com_bloc/app/core/keys/keys.dart';
 import 'package:vakinha_burger_provider_com_bloc/app/core/ui/helpers/size_extensions.dart';
 import 'package:vakinha_burger_provider_com_bloc/app/core/ui/styles/text_styles.dart';
 import 'package:vakinha_burger_provider_com_bloc/app/dto/order_product_dto.dart';
 import 'package:vakinha_burger_provider_com_bloc/app/pages/auth/login/login_page.dart';
+import 'package:vakinha_burger_provider_com_bloc/app/pages/order/order_page.dart';
 
 class ShoppingBagWidget extends StatelessWidget {
   final List<OrderProductDto> bag;
@@ -14,9 +18,16 @@ class ShoppingBagWidget extends StatelessWidget {
   Future<void> _goOrder(BuildContext context) async {
     final navigator = Navigator.of(context);
     final sp = await SharedPreferences.getInstance();
-    if (!sp.containsKey('accessToken')) {
-      final loginResult = await navigator.pushNamed(LoginPage.route);      
+    if (!sp.containsKey(Keys.accessToken)) {
+      final loginResult = await navigator.pushNamed(LoginPage.route);
+      log(loginResult.toString());
+
+      if (loginResult == null || loginResult == false) {
+        return;
+      }
     }
+
+    await navigator.pushNamed(OrderPage.route, arguments: bag);
   }
 
   @override
